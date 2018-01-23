@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RainforeSt Book Store</title>
+    <%= csrf_meta_tags %>
+    <link type="text/css" rel="stylesheet" href="../../assets/stylesheets/stylesheet.css"/>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class ="wrapper">
+      <header>
+        <div class="flash">
+          <% if flash[:notice] %>
+            <p class="notice"><%= flash[:notice] %></p>
+          <% end %>
+        </div>
+        <h1>RainforeSt Book Store</h1>
+        <nav class="header_links">
+          <ul>
+            <li><%= link_to "All Books", products_path%></li>
+            <li><%= link_to "New Books", new_product_path%></li>
+          </ul>
+        </nav>
+      </header>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

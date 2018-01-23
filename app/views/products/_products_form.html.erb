@@ -1,0 +1,38 @@
+<%= form_for product do |f| %>
+<div class = "form wrapper">
+  <p>
+    <%= f.label :Book %>
+    <%= f.text_field :name, placeholder: "Leonardo Da Vinci" %>
+  </p>
+
+  <p>
+    <%= f.label :Summary %>
+    <%= f.text_area :description, placeholder: "Art work" %>
+  </p>
+
+
+    <p>
+      <%= f.label :Cover %>
+      <%= f.text_field :img_url, placeholder: "example@example.com"%>
+    </p>
+
+  <p>
+    <%= f.label :Price %>
+    <%= f.text_field :price, placeholder: "$.0.00" %>
+  </p>
+
+
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+
+<% end %>
+
+<% if product.errors.any? %>
+  <ul>
+    <% product.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+</div>

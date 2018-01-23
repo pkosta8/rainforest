@@ -1,0 +1,33 @@
+<div class ="wrapper show">
+  <h1><%= @product.name %></h1>
+
+
+  <ul>
+    <li>Description: <%= @product.description %></li>
+    <li>Price: <%= dollars(@product.price) %></li>
+  </ul>
+
+  <ul>
+    <% @product.reviews.each do |review|  %>
+      <li><%= review.comment %>
+          <%= link_to "Edit", edit_product_review_path(@product, review ) %>
+          <%= link_to("Delete", "/products/#{@product.id}/reviews/#{review.id}", method: :delete, data: {confirm: "Delete this comment?"})  %>
+      </li>
+
+    <% end %>
+  </ul>
+
+  <% if @review.errors.any? %>
+    <%= @review.errors.full_messages[0] %>
+  <% end %>
+
+    <%= render 'reviews/reviews_forms', product: @product, review: @review %>
+    <div class ="show_links">
+
+    <%= link_to "Back", products_path %>
+    |
+    <%= link_to "Edit", edit_product_path(@product) %>
+    |
+    <%= link_to("Delete", "/products/#{@product.id}", method: :delete, data: {confirm: "Delete this book?"})  %>
+  </div>
+</div>
